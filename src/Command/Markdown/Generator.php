@@ -57,13 +57,17 @@ class Generator extends Command
 
                 $fileBuilder->save($path);
 
-                $output->writeln('<info>File successfully saved at: ' . $path . '</info>');
+                $output->writeln(
+                    sprintf('<info>File successfully saved at: %s</info>', $path)
+                );
 
                 return Command::SUCCESS;
             } else {
-                $output->writeln('<error>Path doesn\'t exist.</error>');
+                $output->writeln(
+                    sprintf('<error>Oops. The path "%s" doesn\'t exist.</error>', $path)
+                );
 
-                return Command::FAILURE;
+                return Command::INVALID;
             }
         }
 
@@ -102,11 +106,15 @@ class Generator extends Command
 
     private function promptLicense(): ChoiceQuestion
     {
-        return new ChoiceQuestion(
+        $question new ChoiceQuestion(
             'License',
             ['ISC', 'MIT', 'GPL', 'BSD'],
             DefaultValue::LICENSE
         );
+
+        $question->setErrorMessage('Please select a valid license type');
+
+        return $question;
     }
 
     private function promptDestinationFile(): Question
