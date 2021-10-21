@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PH7\PhpReadmeGeneratorFile\Command\Markdown;
 
-class Build
+class Builder
 {
     private string $title;
 
@@ -35,6 +35,6 @@ class Build
 
     private function getContents()
     {
-        return include 'readme-template.md';
+        return include __DIR__ . '/view/readme-view.md';
     }
 }

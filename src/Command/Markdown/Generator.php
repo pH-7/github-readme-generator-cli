@@ -46,7 +46,7 @@ class Generator extends Command
             $path = $helper->ask($input, $output, $this->promptDestinationFile());
 
             if (file_exists($path)) {
-                $fileBuilder = new Build([
+                $fileBuilder = new Builder([
                     'title' => $input->getOption('title'),
                     'heading' => $heading,
                     'description' => $description,
