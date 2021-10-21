@@ -1,1 +1,22 @@
-# Created by .ignore support plugin (hsz.mobi)
+# TMP parameter files
+*.log
+*~
+*.swp
+.directory
+.DS_Store*
+
+# Composer
+bin/*
+!bin/console
+vendor
+
+# PHPUnit
+phpunit.xml
+.phpunit.result.cache
+
+# Composer
+composer.phar
+composer.lock
+
+# Ignore PHPStorm config folder
+.idea
