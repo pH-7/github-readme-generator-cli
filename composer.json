@@ -1,0 +1,25 @@
+{
+    "name": "ph-7/php-readme-generator-file",
+    "description": "A simple way to generate a GitHub README file",
+    "type": "project",
+    "require": {
+        "symfony/console": "^5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "phake/phake": "^4.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PH7\\PhpReadmeGeneratorFile\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pierre-Henry Soria",
+            "email": "hi@ph7.me"
+        }
+    ],
+    "minimum-stability": "stable"
+}
