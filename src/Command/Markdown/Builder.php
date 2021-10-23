@@ -28,13 +28,36 @@ class Builder
         $this->licenseType = $data['license'];
     }
 
-    public function save(string $path): bool
+    public function save(string $path): bool|int
     {
-        return file_put_contents($path, $this->getContents())
+        return file_put_contents($path, $this->getContents());
     }
 
-    private function getContents()
+    private function getContents(): string
     {
-        return include __DIR__ . '/view/readme-view.md';
+        return $this->parse(file_get_contents(__DIR__ . '/view/readme-template.md'));
+    }
+
+    private function parse(string $contents): string
+    {
+        return str_ireplace(
+            [
+                '[TITLE]',
+                '[HEADING]',
+                '[DESCRIPTION]',
+                '[AUTHOR]',
+                '[EMAIL]',
+                '[LICENSE]',
+            ],
+            [
+                $this->title,
+                $this->heading,
+                $this->description,
+                $this->authorName,
+                $this->authorEmail,
+                $this->licenseType
+            ],
+            $contents
+        );
     }
 }

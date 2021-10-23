@@ -1,6 +1,14 @@
-# <?php $this->title ?>
+# [TITLE]
 
-## <?php $this->heading ?>
+## [HEADING]
+
+[DESCRIPTION]
+
+## About
+
+[AUTHOR], [EMAIL]
 
 
-$this->description;
+## License
+
+[LICENSE]
