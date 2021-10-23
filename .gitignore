@@ -6,7 +6,6 @@
 .DS_Store*
 
 # Composer
-bin/*
 !bin/console
 vendor
 
