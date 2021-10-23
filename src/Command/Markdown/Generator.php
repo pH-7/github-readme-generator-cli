@@ -24,7 +24,7 @@ class Generator extends Command
     protected function configure()
     {
         $this
-            ->setName('generate')
+            ->setName('markdown:generate')
             ->addOption(
                 'title',
                 null,
