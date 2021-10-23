@@ -107,7 +107,7 @@ class Generator extends Command
 
     private function promptLicense(): ChoiceQuestion
     {
-        $question new ChoiceQuestion(
+        $question = new ChoiceQuestion(
             'License',
             ['ISC', 'MIT', 'GPL', 'BSD'],
             DefaultValue::LICENSE
