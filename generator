@@ -1,0 +1,3 @@
+#!/bin/bash
+
+php bin/generate markdown:generate $1
