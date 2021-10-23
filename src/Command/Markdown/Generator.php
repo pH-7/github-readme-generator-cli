@@ -7,8 +7,8 @@ namespace PH7\PhpReadmeGeneratorFile\Command\Markdown;
 use PH7\PhpReadmeGeneratorFile\DefaultValue;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\HelperInterface;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
@@ -25,10 +25,9 @@ class Generator extends Command
     {
         $this
             ->setName('markdown:generate')
-            ->addOption(
+            ->addArgument(
                 'title',
-                null,
-                InputOption::VALUE_REQUIRED,
+                InputArgument::REQUIRED,
                 'Project Name'
             );
     }
@@ -43,23 +42,26 @@ class Generator extends Command
         $email = $helper->ask($input, $output, $this->promptEmail());
         $license = $helper->ask($input, $output, $this->promptLicense());
 
-        if ($this->finalConfirmation()) {
+        if ($this->finalConfirmation($helper, $input, $output)) {
             $path = $helper->ask($input, $output, $this->promptDestinationFile());
+            $path = is_string($path) && strlen($path) > 2 ? realpath($path) : ROOT_DIR . '/tmp';
+            $filename = sprintf('README-%s.md', date('Y-m-d'));
 
-            if (file_exists($path)) {
+            if (is_dir($path)) {
                 $fileBuilder = new Builder([
-                    'title' => $input->getOption('title'),
-                    'heading' => $heading,
-                    'description' => $description,
-                    'author' => $author,
-                    'email' => $email,
-                    'license' => $license
+                    'title' => (string)$input->getArgument('title'),
+                    'heading' => (string)$heading,
+                    'description' => (string)$description,
+                    'author' => (string)$author,
+                    'email' => (string)$email,
+                    'license' => (string)$license
                 ]);
 
-                $fileBuilder->save($path);
+                $fullpath = $path . DIRECTORY_SEPARATOR . $filename;
+                $fileBuilder->save($fullpath);
 
                 $output->writeln(
-                    sprintf('<info>File successfully saved at: %s</info>', $path)
+                    sprintf('<info>File successfully saved at: %s</info>', $fullpath)
                 );
 
                 return Command::SUCCESS;
@@ -118,18 +120,18 @@ class Generator extends Command
         return $question;
     }
 
+    private function finalConfirmation(HelperInterface $helper, InputInterface $input, OutputInterface $output): bool
+    {
+        $question = new ConfirmationQuestion('Are you happy to generate the README? [y/m]', true);
+
+        return (bool)$helper->ask($input, $output, $question);
+    }
+
     private function promptDestinationFile(): Question
     {
         return new Question(
             'Path Destination Readme File',
-            //DefaultValue::DESTINATION_FILE
+        //DefaultValue::DESTINATION_FILE
         );
-    }
-
-    private function finalConfirmation(HelperInterface $helper, InputInterface $input, OutputInterface $output): bool
-    {
-        $question = new ConfirmationQuestion('Are you happy to generate the README?', false);
-
-        return (bool)$helper->ask($input, $output, $question);
     }
 }
