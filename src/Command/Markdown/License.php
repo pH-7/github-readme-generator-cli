@@ -9,7 +9,7 @@ final class License
     private const GPL = 'GPL';
     private const BSD = 'BSD';
     private const MPL = 'MPL';
-    private const AGPL = 'AGPL'
+    private const AGPL = 'AGPL';
 
     public const CODES = [
         self::ISC,
