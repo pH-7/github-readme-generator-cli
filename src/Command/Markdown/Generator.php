@@ -39,8 +39,9 @@ class Generator extends Command
         $helper = $this->getHelper('question');
         $io = new SymfonyStyle($input, $output);
 
-        if ($data = $this->treatFields($input, $output)) {
+        $data = $this->treatFields($input, $output);
 
+        if (is_array($data)) {
             if ($this->finalConfirmation($helper, $input, $output)) {
                 $path = $helper->ask($input, $output, $this->promptDestinationFile());
                 $path = is_string($path) && strlen($path) > 2 ? realpath($path) : ROOT_DIR . '/tmp';
@@ -70,7 +71,7 @@ class Generator extends Command
         return Command::FAILURE;
     }
 
-    private function treatFields(InputInterface $input, OutputInterface $output): ?array
+    private function treatFields(InputInterface $input, OutputInterface $output): array|int
     {
         $helper = $this->getHelper('question');
         $io = new SymfonyStyle($input, $output);
@@ -91,9 +92,9 @@ class Generator extends Command
                 'license' => $license
             ];
         } catch (EmptyFieldException $e) {
-            $io->error($e->getMessage());
+            $io->warning($e->getMessage());
 
-            return null;
+            return Command::INVALID;;
         }
     }
 
