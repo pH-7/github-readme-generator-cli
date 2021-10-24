@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PH7\PhpReadmeGeneratorFile\Command\Markdown;
 
+use PH7\PhpReadmeGeneratorFile\Command\Exception\EmptyFieldException;
 use PH7\PhpReadmeGeneratorFile\DefaultValue;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\HelperInterface;
@@ -13,6 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Console\Question\Question;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 class Generator extends Command
 {
@@ -35,79 +37,111 @@ class Generator extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $helper = $this->getHelper('question');
+        $io = new SymfonyStyle($input, $output);
 
-        $heading = $helper->ask($input, $output, $this->promptHeading());
-        $description = $helper->ask($input, $output, $this->promptDescription());
-        $author = $helper->ask($input, $output, $this->promptAuthor());
-        $email = $helper->ask($input, $output, $this->promptEmail());
-        $license = $helper->ask($input, $output, $this->promptLicense());
+        if ($data = $this->treatFields($input, $output)) {
 
-        if ($this->finalConfirmation($helper, $input, $output)) {
-            $path = $helper->ask($input, $output, $this->promptDestinationFile());
-            $path = is_string($path) && strlen($path) > 2 ? realpath($path) : ROOT_DIR . '/tmp';
-            $filename = sprintf('README-%s.md', date('Y-m-d'));
+            if ($this->finalConfirmation($helper, $input, $output)) {
+                $path = $helper->ask($input, $output, $this->promptDestinationFile());
+                $path = is_string($path) && strlen($path) > 2 ? realpath($path) : ROOT_DIR . '/tmp';
+                $filename = sprintf('README-%s.md', date('Y-m-d'));
 
-            if (is_dir($path)) {
-                $fileBuilder = new Builder([
-                    'title' => (string)$input->getArgument('title'),
-                    'heading' => (string)$heading,
-                    'description' => (string)$description,
-                    'author' => (string)$author,
-                    'email' => (string)$email,
-                    'license' => (string)$license
-                ]);
+                if (is_dir($path)) {
+                    $fileBuilder = new Builder($data);
 
-                $fullpath = $path . DIRECTORY_SEPARATOR . $filename;
-                $fileBuilder->save($fullpath);
+                    $fullpath = $path . DIRECTORY_SEPARATOR . $filename;
+                    $fileBuilder->save($fullpath);
 
-                $output->writeln(
-                    sprintf('<info>File successfully saved at: %s</info>', $fullpath)
-                );
+                    $output->writeln(
+                        $io->success(sprintf('File successfully saved at: %s', $fullpath))
+                    );
 
-                return Command::SUCCESS;
-            } else {
-                $output->writeln(
-                    sprintf('<error>Oops. The path "%s" doesn\'t exist.</error>', $path)
-                );
+                    return Command::SUCCESS;
+                } else {
+                    $output->writeln(
+                        $io->error(sprintf('Oops. The path "%s" doesn\'t exist.', $path))
+                    );
 
-                return Command::INVALID;
+                    return Command::INVALID;
+                }
             }
         }
 
         return Command::FAILURE;
     }
 
-    private function promptHeading(): Question
+    private function treatFields(InputInterface $input, OutputInterface $output): ?array
     {
-        return new Question(
-            'Project Heading',
-        );
+        $helper = $this->getHelper('question');
+        $io = new SymfonyStyle($input, $output);
+
+        try {
+            $heading = $this->promptHeading($io);
+            $description = $this->promptDescription($io);
+            $author = $this->promptAuthor($io);
+            $email = $this->promptEmail($io);
+            $license = $this->promptLicense($helper, $input, $output);
+
+            return [
+                'title' => $input->getArgument('title'),
+                'heading' => $heading,
+                'description' => $description,
+                'author' => $author,
+                'email' => $email,
+                'license' => $license
+            ];
+        } catch (EmptyFieldException $e) {
+            $io->error($e->getMessage());
+
+            return null;
+        }
     }
 
-    private function promptDescription(): Question
+    private function promptHeading(SymfonyStyle $io): string
     {
-        return new Question(
-            'Project Description',
-        );
+        $heading = $io->ask('Project Heading');
+
+        if (!$this->isFieldFilled($heading)) {
+            throw new EmptyFieldException('Mention the README heading.');
+        }
+
+        return $heading;
     }
 
-    private function promptAuthor(): Question
+    private function promptDescription(SymfonyStyle $io): string
     {
-        return new Question(
-            'Author Name',
-            DefaultValue::AUTHOR
-        );
+        $description = $io->ask('Project Description');
+
+        if (!$this->isFieldFilled($description)) {
+            throw new EmptyFieldException('Describe a bit your project.');
+        }
+
+        return $description;
     }
 
-    private function promptEmail(): Question
+    private function promptAuthor(SymfonyStyle $io): string
     {
-        return new Question(
-            'Author Email',
-            DefaultValue::EMAIL
-        );
+        $authorName = $io->ask('Author Name');
+
+        if (!$this->isFieldFilled($authorName)) {
+            throw new EmptyFieldException('Author name is required.');
+        }
+
+        return $authorName;
     }
 
-    private function promptLicense(): ChoiceQuestion
+    private function promptEmail(SymfonyStyle $io): string
+    {
+        $email = $io->ask('Author Email');
+
+        if (!$this->isFieldFilled($email)) {
+            throw new EmptyFieldException('Author email is required.');
+        }
+
+        return $email;
+    }
+
+    private function promptLicense(HelperInterface $helper, InputInterface $input, OutputInterface $output): string
     {
         $question = new ChoiceQuestion(
             'License',
@@ -115,9 +149,15 @@ class Generator extends Command
             DefaultValue::LICENSE
         );
 
-        $question->setErrorMessage('Please select a valid license type');
+        $question->setErrorMessage('Select a valid license type 🤠');
 
-        return $question;
+        $license = $helper->ask($input, $output, $question);
+
+        if (!$this->isFieldFilled($license)) {
+            throw new EmptyFieldException('License type is required.');
+        }
+
+        return $license;
     }
 
     private function finalConfirmation(HelperInterface $helper, InputInterface $input, OutputInterface $output): bool
@@ -133,5 +173,10 @@ class Generator extends Command
             'Path Destination Readme File',
         //DefaultValue::DESTINATION_FILE
         );
+    }
+
+    private function isFieldFilled($string): bool
+    {
+        return !empty($string) && strlen($string) > 0;
     }
 }
