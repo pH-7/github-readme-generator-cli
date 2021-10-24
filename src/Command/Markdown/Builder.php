@@ -42,12 +42,13 @@ class Builder
     {
         return str_ireplace(
             [
-                '[TITLE]',
-                '[HEADING]',
-                '[DESCRIPTION]',
-                '[AUTHOR]',
-                '[EMAIL]',
-                '[LICENSE]',
+                ':TITLE:',
+                ':HEADING:',
+                ':DESCRIPTION:',
+                ':AUTHOR:',
+                ':EMAIL:',
+                ':LICENSE_NAME:',
+                ':LICENSE_LINK:'
             ],
             [
                 $this->title,

@@ -1,14 +1,14 @@
-# [TITLE]
+# :TITLE:
 
-## [HEADING]
+## :HEADING:
 
-[DESCRIPTION]
+:DESCRIPTION:
 
 ## About
 
-[AUTHOR], [EMAIL]
+:AUTHOR:, :EMAIL:
 
 
 ## License
 
-[LICENSE]
+[:LICENSE_NAME:](:LICENSE_LINK:)
