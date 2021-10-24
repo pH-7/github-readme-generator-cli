@@ -18,9 +18,9 @@
 
 ## 🪄 Author
 
-I'm **[:AUTHOR-NAME:](:AUTHOR-URL:)**. A passionate,  zen &amp; dedicated software engineer 😊 
+I'm **[:AUTHOR-NAME:](:AUTHOR-URL:)**. A passionate,  zen &amp; dedicated software engineer 😊
 
-You can contact me at: *:AUTHOR-EMAIL:*
+You can keep in touch with me at: *:AUTHOR-EMAIL:*
 
 [![:GITHUB-USERNAME:][github-image]](https://github.com/:GITHUB-USERNAME:)
 
