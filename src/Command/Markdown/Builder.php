@@ -33,10 +33,10 @@ class Builder
 
     public function __construct(array $data)
     {
-        $this->probjectName = $data['name'];
+        $this->projectName = $data['name'];
         $this->heading = $data['heading'];
         $this->description = $data['description'];
-        $this->projectRequirements = $data['requirements'];
+        $this->requirements = $data['requirements'];
         $this->authorName = $data['author'];
         $this->authorEmail = $data['email'];
         $this->authorWebpage = $data['webpage'];
@@ -70,7 +70,7 @@ class Builder
                 ':DESCRIPTION:',
                 ':REQUIREMENTS:',
                 ':AUTHOR-NAME:',
-                ':EMAIL:',
+                ':AUTHOR-EMAIL:',
                 ':AUTHOR-URL:',
                 ':LICENSE-NAME:',
                 ':LICENSE-LINK:',

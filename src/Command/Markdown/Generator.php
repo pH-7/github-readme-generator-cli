@@ -74,6 +74,7 @@ class Generator extends Command
             $name = $this->promptName($io);
             $heading = $this->promptHeading($io);
             $description = $this->promptDescription($io);
+            $requirements = $this->promptRequirements($io);
             $author = $this->promptAuthor($io);
             $email = $this->promptEmail($io);
             $webpage = $this->promptHomepageUrl($io);
@@ -84,6 +85,7 @@ class Generator extends Command
                 'name' => $name,
                 'heading' => $heading,
                 'description' => $description,
+                'requirements' => $requirements,
                 'author' => $author,
                 'email' => $email,
                 'webpage' => $webpage,
@@ -99,21 +101,21 @@ class Generator extends Command
 
     private function promptName(SymfonyStyle $io): string
     {
-        $heading = $io->ask('Project Name');
+        $name = $io->ask('Project Name');
 
-        if (!$this->isFieldFilled($heading)) {
+        if (!$this->isFieldFilled($name)) {
             throw new EmptyFieldException('Mention a name for your project 😺');
         }
 
-        return $heading;
+        return $name;
     }
 
     private function promptHeading(SymfonyStyle $io): string
     {
-        $heading = $io->ask('Project Heading');
+        $heading = $io->ask('Project Heading/Summary');
 
         if (!$this->isFieldFilled($heading)) {
-            throw new EmptyFieldException('Mention the README heading.');
+            throw new EmptyFieldException('Mention the README heading or a small summary.');
         }
 
         return $heading;
@@ -130,6 +132,17 @@ class Generator extends Command
         return $description;
     }
 
+    private function promptRequirements(SymfonyStyle $io): string
+    {
+        $requirements = $io->ask('Requirements / Installation?');
+
+        if (!$this->isFieldFilled($requirements)) {
+            throw new EmptyFieldException('What are the requirements/Installation steps for this project?');
+        }
+
+        return $requirements;
+    }
+
     private function promptAuthor(SymfonyStyle $io): string
     {
         $authorName = $io->ask('Author Name');
@@ -143,7 +156,7 @@ class Generator extends Command
 
     private function promptEmail(SymfonyStyle $io): string
     {
-        $email = $io->ask('Author Email');
+        $email = $io->ask('Author Email (will be also used for your gravatar)');
 
         if (!$this->isFieldFilled($email)) {
             throw new EmptyFieldException('Author email is required.');
