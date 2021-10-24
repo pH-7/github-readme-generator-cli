@@ -1,6 +1,7 @@
 {
     "name": "ph-7/php-readme-generator-file",
     "description": "A simple way to generate a GitHub README file",
+    "homepage": "https://pierrehenry.be",
     "type": "project",
     "require": {
         "php": ">=8.0.0",
@@ -20,7 +21,8 @@
     "authors": [
         {
             "name": "Pierre-Henry Soria",
-            "email": "hi@ph7.me"
+            "email": "hi@ph7.me",
+            "homepage": "https://ph7.me"
         }
     ],
     "minimum-stability": "stable"
