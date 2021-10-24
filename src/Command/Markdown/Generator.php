@@ -156,10 +156,15 @@ class Generator extends Command
 
     private function promptEmail(SymfonyStyle $io): string
     {
-        $email = $io->ask('Author Email (will be also used for your gravatar)');
+        $email = $io->ask('Author Email (will also be used for your gravatar)');
 
         if (!$this->isFieldFilled($email)) {
             throw new EmptyFieldException('Author email is required.');
+        }
+
+
+        if (!$this->isValidEmail($email)) {
+            throw new InvalidInputException('Please mention a valid email 😀');
         }
 
         return $email;
@@ -172,6 +177,10 @@ class Generator extends Command
 
         if (!$this->isFieldFilled($webpage)) {
             throw new EmptyFieldException('Can you mention your homepage (.e.g website, GitHub profile, etc).');
+        }
+
+        if (!$this->isValidUrl($webpage)) {
+            throw new InvalidInputException('Please mention a valid website URL 😄');
         }
 
         return $webpage;
@@ -222,8 +231,18 @@ class Generator extends Command
         );
     }
 
-    private function isFieldFilled($string): bool
+    private function isFieldFilled(string? $string): bool
     {
         return !empty($string) && strlen($string) > 0;
+    }
+
+    private function isValidEmail(string $email): bool
+    {
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+
+    private function isValidUrl(string $url): bool
+    {
+        return filter_var($url, FILTER_VALIDATE_URL);
     }
 }
