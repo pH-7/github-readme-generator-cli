@@ -8,4 +8,5 @@ final class DefaultValue
     public const EMAIL = 'hi@ph7.me';
     public const LICENSE = 1; // 1 = MIT
     public const DESTINATION_FILE = './';
+    public const GRAVATAR_SIZE = 200;
 }
