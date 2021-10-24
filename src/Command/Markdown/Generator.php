@@ -145,7 +145,7 @@ class Generator extends Command
     {
         $question = new ChoiceQuestion(
             'License',
-            ['ISC', 'MIT', 'GPL', 'BSD'],
+            License::CODES,
             DefaultValue::LICENSE
         );
 
