@@ -25,13 +25,7 @@ class Generator extends Command
 
     protected function configure()
     {
-        $this
-            ->setName('markdown:generate')
-            ->addArgument(
-                'title',
-                InputArgument::REQUIRED,
-                'Project Name'
-            );
+        $this->setName('markdown:generate');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -77,18 +71,23 @@ class Generator extends Command
         $io = new SymfonyStyle($input, $output);
 
         try {
+            $name = $this->promptName($io);
             $heading = $this->promptHeading($io);
             $description = $this->promptDescription($io);
             $author = $this->promptAuthor($io);
             $email = $this->promptEmail($io);
+            $webpage = $this->promptHomepageUrl($io);
+            $githubUsername = $this->promptGithub($io);
             $license = $this->promptLicense($helper, $input, $output);
 
             return [
-                'title' => $input->getArgument('title'),
+                'name' => $name,
                 'heading' => $heading,
                 'description' => $description,
                 'author' => $author,
                 'email' => $email,
+                'webpage' => $webpage,
+                'github' => $githubUsername,
                 'license' => $license
             ];
         } catch (EmptyFieldException $e) {
@@ -96,6 +95,17 @@ class Generator extends Command
 
             return Command::INVALID;;
         }
+    }
+
+    private function promptName(SymfonyStyle $io): string
+    {
+        $heading = $io->ask('Project Name');
+
+        if (!$this->isFieldFilled($heading)) {
+            throw new EmptyFieldException('Mention a name for your project 😺');
+        }
+
+        return $heading;
     }
 
     private function promptHeading(SymfonyStyle $io): string
@@ -140,6 +150,29 @@ class Generator extends Command
         }
 
         return $email;
+    }
+
+    private function promptHomepageUrl(SymfonyStyle $io): string
+    {
+        $webpage = $io->ask('Author Webpage');
+
+
+        if (!$this->isFieldFilled($webpage)) {
+            throw new EmptyFieldException('Can you mention your homepage (.e.g website, GitHub profile, etc).');
+        }
+
+        return $webpage;
+    }
+
+    private function promptGithub(SymfonyStyle $io): string
+    {
+        $github = $io->ask('GitHub Username');
+
+        if (!$this->isFieldFilled($github)) {
+            throw new EmptyFieldException('GitHub nickname is required.');
+        }
+
+        return $github;
     }
 
     private function promptLicense(HelperInterface $helper, InputInterface $input, OutputInterface $output): string

@@ -6,7 +6,8 @@
     "require": {
         "php": ">=8.0.0",
         "symfony/console": "^5.3",
-        "monolog/monolog": "^2.3"
+        "monolog/monolog": "^2.3",
+        "ph-7/ph2gravatar": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
