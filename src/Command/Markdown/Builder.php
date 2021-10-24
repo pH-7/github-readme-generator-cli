@@ -26,6 +26,7 @@ class Builder
         $this->authorName = $data['author'];
         $this->authorEmail = $data['email'];
         $this->licenseType = $data['license'];
+        $this->licenseLink = License::getLicenseLink($data['license']);
     }
 
     public function save(string $path): bool|int
@@ -56,7 +57,8 @@ class Builder
                 $this->description,
                 $this->authorName,
                 $this->authorEmail,
-                $this->licenseType
+                $this->licenseType,
+                $this->licenseLink,
             ],
             $contents
         );
