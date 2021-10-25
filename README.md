@@ -28,6 +28,9 @@
     ```
 
 
+![GitHub README File Generator CLI](php-readme-generator-cli-sample.png)
+
+
 ## 🤠 About Me
 
 [![Pierre-Henry Soria](https://s.gravatar.com/avatar/a210fe61253c43c869d71eaed0e90149?s=200)](https://ph7.me "Pierre-Henry Soria personal website")
