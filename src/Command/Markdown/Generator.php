@@ -236,18 +236,18 @@ class Generator extends Command
         );
     }
 
-    private function isFieldFilled(string? $string): bool
+    private function isFieldFilled(?string $string): bool
     {
         return !empty($string) && strlen($string) > 0;
     }
 
     private function isValidEmail(string $email): bool
     {
-        return filter_var($email, FILTER_VALIDATE_EMAIL);
+        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
     }
 
     private function isValidUrl(string $url): bool
     {
-        return filter_var($url, FILTER_VALIDATE_URL);
+        return filter_var($url, FILTER_VALIDATE_URL) !== false;
     }
 }
