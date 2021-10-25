@@ -96,7 +96,11 @@ class Generator extends Command
         } catch (EmptyFieldException $e) {
             $io->warning($e->getMessage());
 
-            return Command::INVALID;;
+            return Command::INVALID;
+        } catch (InvalidInputException $e) {
+            $io->error($e->getMessage());
+
+            return Command::FAILURE;
         }
     }
 
