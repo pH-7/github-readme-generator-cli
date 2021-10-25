@@ -1,11 +1,11 @@
 # Readme Generator 🚀
 
-# Requiremennts 📙
+# 📙 Requiremennts
 
 * Make sure you have [PHP 8.0](https://www.php.net/releases/8_0_0.php) or higher installed.
 
 
-## Steup ⚙️
+## ⚙️ Steup
 
 * Install Composer v2 or higher (https://getcomposer.org)
   
@@ -28,7 +28,7 @@
     ```
 
 
-## About Me 🤠
+## 🤠 About Me
 
 [![Pierre-Henry Soria](https://s.gravatar.com/avatar/a210fe61253c43c869d71eaed0e90149?s=200)](https://ph7.me "Pierre-Henry Soria personal website")
 
