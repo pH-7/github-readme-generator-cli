@@ -12,14 +12,21 @@
 * Install the dependencies with composer as below
 
     ```bash
-      composer install
+    composer install
     ```
 
 * Update the permissions of the `generator` bash file located in the root directory
 
     ```
-      chmod u+x ./companies
+    chmod u+x ./generator
     ```
+
+* Run the script, and follow the instruction shown. Enjoy 😺
+
+    ```bash
+    ./generator
+    ```
+
 
 ## About Me 🤠
 
