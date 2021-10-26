@@ -34,6 +34,9 @@ final class License
             case self::GPL:
                 return 'https://www.gnu.org/licenses/gpl.html';
 
+            case self::BSD:
+                return 'https://opensource.org/licenses/BSD-3-Clause';
+
             case self::MPL:
                 return 'https://www.mozilla.org/en-US/MPL/';
 
