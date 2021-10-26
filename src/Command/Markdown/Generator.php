@@ -43,8 +43,8 @@ class Generator extends Command
         if (is_array($data)) {
             if ($this->finalConfirmation($helper, $input, $output)) {
                 $path = $helper->ask($input, $output, $this->promptDestinationFile());
-                $path = is_string($path) && strlen($path) > 2 ? realpath($path) : ROOT_DIR . '/tmp';
-                $filename = sprintf('README-%s.md', date('Y-m-d H:i'));
+                $path = $this->getValidPath($path);
+                $filename = $this->getFilename();
 
                 if (is_dir($path)) {
                     $fileBuilder = new Builder($data);
@@ -181,7 +181,7 @@ class Generator extends Command
 
     private function promptHomepageUrl(SymfonyStyle $io): string
     {
-        $webpage = $io->ask('Valid Author Webpage');
+        $webpage = $io->ask('Valid Author Webpage (e.g. https://pierre.com)');
 
 
         if (!$this->isFieldFilled($webpage)) {
@@ -209,9 +209,9 @@ class Generator extends Command
     private function promptLicense(HelperInterface $helper, InputInterface $input, OutputInterface $output): string
     {
         $question = new ChoiceQuestion(
-            'License',
+            sprintf('License [%s]', DefaultValue::LICENSE_CODE),
             License::CODES,
-            DefaultValue::LICENSE
+            DefaultValue::LICENSE_CODE
         );
 
         $question->setErrorMessage('Select a valid license type 🤠');
@@ -235,9 +235,19 @@ class Generator extends Command
     private function promptDestinationFile(): Question
     {
         return new Question(
-            'Path Destination Readme File',
-        //DefaultValue::DESTINATION_FILE
+            sprintf('Destination Path [%s]', DefaultValue::DESTINATION_FILE),
+            DefaultValue::DESTINATION_FILE
         );
+    }
+
+    private function getValidPath(?string $path): string
+    {
+        return is_string($path) && strlen($path) > 2 ? realpath($path) : DefaultValue::DESTINATION_FILE;
+    }
+
+    private function getFilename(): string
+    {
+        return sprintf('README-%s.md', date('Y-m-d H:i'));
     }
 
     private function isFieldFilled(?string $string): bool

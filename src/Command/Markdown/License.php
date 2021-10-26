@@ -10,12 +10,12 @@ namespace PH7\PhpReadmeGeneratorFile\Command\Markdown;
 
 final class License
 {
-    private const ISC_CODE = 'ISC';
-    private const MIT_CODE = 'MIT';
-    private const GPL_CODE = 'GPL';
-    private const BSD_CODE = 'BSD';
-    private const MPL_CODE = 'MPL';
-    private const AGPL_CODE = 'AGPL';
+    public const ISC_CODE = 'ISC';
+    public const MIT_CODE = 'MIT';
+    public const GPL_CODE = 'GPL';
+    public const BSD_CODE = 'BSD';
+    public const MPL_CODE = 'MPL';
+    public const AGPL_CODE = 'AGPL';
 
     private const ISC_URL = 'https://opensource.org/licenses/ISC';
     private const MIT_URL = 'https://opensource.org/licenses/MIT';
