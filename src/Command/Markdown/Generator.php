@@ -44,7 +44,7 @@ class Generator extends Command
             if ($this->finalConfirmation($helper, $input, $output)) {
                 $path = $helper->ask($input, $output, $this->promptDestinationFile());
                 $path = is_string($path) && strlen($path) > 2 ? realpath($path) : ROOT_DIR . '/tmp';
-                $filename = sprintf('README-%s.md', date('Y-m-d'));
+                $filename = sprintf('README-%s.md', date('Y-m-d H:i'));
 
                 if (is_dir($path)) {
                     $fileBuilder = new Builder($data);
