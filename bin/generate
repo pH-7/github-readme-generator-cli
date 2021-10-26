@@ -22,7 +22,7 @@ use PH7\PhpReadmeGeneratorFile\Command\Markdown\{
 use Symfony\Component\Console\Application;
 
 $logger = new Logger('ReadmeGenerator');
-$logger->pushHandler(new StreamHandler("php://stdout", Logger::DEBUG));
+$logger->pushHandler(new StreamHandler('php://stdout', Logger::DEBUG));
 
 $app = new Application(
     APP_NAME,
