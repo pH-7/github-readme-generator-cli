@@ -193,7 +193,7 @@ class Generator extends Command
 
     private function promptGithub(SymfonyStyle $io): string
     {
-        $github = $io->ask('GitHub Username');
+        $github = $io->ask('GitHub Username (github.com/<username>)');
 
         if (!$this->isFieldFilled($github)) {
             throw new EmptyFieldException('GitHub nickname is required.');
