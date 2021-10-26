@@ -1,3 +1,8 @@
 #!/bin/bash
 
+##
+# (c) Pierre-Henry Soria <hi@ph7.me>
+# MIT License <https://opensource.org/licenses/MIT>
+##
+
 php bin/generate markdown:generate $1

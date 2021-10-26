@@ -1,6 +1,10 @@
 #!/usr/bin/env php
 
 <?php
+/**
+ * Copyright (c) Pierre-Henry Soria <hi@ph7.me>
+ * MIT License - https://opensource.org/licenses/MIT
+ */
 
 define('ROOT_DIR', __DIR__ . '/..');
 define('APP_NAME', 'README File Generator');
