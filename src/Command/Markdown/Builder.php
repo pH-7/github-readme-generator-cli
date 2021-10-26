@@ -80,6 +80,7 @@ class Builder
                 ':LICENSE-LINK:',
                 ':GRAVATAR-IMAGE:',
                 ':GITHUB-USERNAME:',
+                ':CURRENT_DATE:',
             ],
             [
                 $this->projectName,
@@ -93,6 +94,7 @@ class Builder
                 $this->licenseLink,
                 $this->gravatarImage,
                 $this->githubUsername,
+                date('Y-m-d'),
             ],
             $contents
         );
