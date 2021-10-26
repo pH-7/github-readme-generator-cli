@@ -13,7 +13,7 @@ class GeneratorTest extends TestCase
     {
     }
 
-    public function test(): void
+    public function testGenerator(): void
     {
     }
 }

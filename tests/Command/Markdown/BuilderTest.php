@@ -6,13 +6,13 @@ namespace PH7\PhpReadmeGeneratorFile\Tests\Command\Markdown;
 
 use PHPUnit\Framework\TestCase;
 
-class BuildTest extends TestCase
+class BuilderTest extends TestCase
 {
     protected function setUp(): void
     {
     }
 
-    public function test(): void
+    public function testBuilder(): void
     {
         //$this->assertSame();
     }
