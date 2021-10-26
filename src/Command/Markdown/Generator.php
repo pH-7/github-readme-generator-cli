@@ -161,7 +161,7 @@ class Generator extends Command
 
     private function promptEmail(SymfonyStyle $io): string
     {
-        $email = $io->ask('Author Email (will also be used for your gravatar)');
+        $email = $io->ask('Valid Author Email (will also be used for your gravatar)');
 
         if (!$this->isFieldFilled($email)) {
             throw new EmptyFieldException('Author email is required.');
@@ -177,7 +177,7 @@ class Generator extends Command
 
     private function promptHomepageUrl(SymfonyStyle $io): string
     {
-        $webpage = $io->ask('Author Webpage');
+        $webpage = $io->ask('Valid Author Webpage');
 
 
         if (!$this->isFieldFilled($webpage)) {
