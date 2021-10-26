@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PH7\PhpReadmeGeneratorFile\Command\Markdown;
 
 final class License
@@ -20,7 +22,7 @@ final class License
         self::AGPL,
     ];
 
-    public static function getLicenseLink($licenseType)
+    public static function getLicenseLink(string $licenseType): string
     {
         switch ($licenseType) {
             case self::ISC:
