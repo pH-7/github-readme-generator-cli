@@ -1,6 +1,8 @@
 #!/bin/bash
 
 ##
+# Shortcut file that calls ~/bin/generate
+#
 # (c) Pierre-Henry Soria <hi@ph7.me>
 # MIT License <https://opensource.org/licenses/MIT>
 ##

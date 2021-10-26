@@ -15,16 +15,16 @@
     composer install
     ```
 
-* Update the permissions of the `generator` bash file located in the root directory
+* Update the permissions of the `generate` bash file located in the root directory
 
     ```
-    chmod u+x ./generator
+    chmod u+x ./generate
     ```
 
 * Run the script, and follow the instruction shown. Enjoy 😺
 
     ```bash
-    ./generator
+    ./generate
     ```
 
 
