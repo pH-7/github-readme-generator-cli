@@ -1,36 +1,44 @@
 # :PROJECT-NAME:
 
-## :HEADING:
+## :book: Contents
+
+- [Requirements](#hammer-requirements)
+- [Installation](#building_construction-installation)
+- [Usage](#thought_balloon-usage)
+- [About](#cook-author)
+- [License](#page_with_curl-license)
+
+### :HEADING:
 
 :DESCRIPTION:
 
-## ⛏ Requirements
+## :hammer: Requirements
 
 :REQUIREMENTS:
 
-## 🏗 How to install it?
+## :building_construction: Installation
 
 <!-- Add what you need here -->
 
-## 💭 How to use it?
+## :thought_balloon: Usage
 
 <!-- Add what you need here -->
 
-## 🪄 Author
+## :cook: Author
 
 I'm **[:AUTHOR-NAME:](:AUTHOR-URL:)**. A passionate, zen &amp; dedicated software engineer 😊
 
-You can keep in touch with me at: *:AUTHOR-EMAIL:*
+You can keep in touch with me at: *:AUTHOR-EMAIL:* 📮
 
 [![:GITHUB-USERNAME:][github-image]](https://github.com/:GITHUB-USERNAME:)
 
 ---
 
-[![:AUTHOR-NAME:](:GRAVATAR-IMAGE:)](:AUTHOR-URL: ":AUTHOR-NAME:, a Software Developer")
+[![:AUTHOR-NAME:](:GRAVATAR-IMAGE:)](:AUTHOR-URL: ":AUTHOR-NAME:")
 
-## 📃 License
+## :page_with_curl: License
 
-pH2Gravatar is distributed under [:LICENSE-NAME:](:LICENSE-LINK:) license 🚀 Enjoy! ❤️
+**:PROJECT-NAME:** is distributed under [:LICENSE-NAME:](:LICENSE-LINK:) license 🚀 Enjoy! ❤️
 
 <!-- GitHub's Markdown reference links -->
 [github-image]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
