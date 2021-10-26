@@ -8,7 +8,7 @@
 ## ⚙️ Steup
 
 * Install Composer v2 or higher (https://getcomposer.org)
-  
+
 * Install the dependencies with composer as below
 
     ```bash
