@@ -6,45 +6,41 @@ namespace PH7\PhpReadmeGeneratorFile\Command\Markdown;
 
 final class License
 {
-    private const ISC = 'ISC';
-    private const MIT = 'MIT';
-    private const GPL = 'GPL';
-    private const BSD = 'BSD';
-    private const MPL = 'MPL';
-    private const AGPL = 'AGPL';
+    private const ISC_CODE = 'ISC';
+    private const MIT_CODE = 'MIT';
+    private const GPL_CODE = 'GPL';
+    private const BSD_CODE = 'BSD';
+    private const MPL_CODE = 'MPL';
+    private const AGPL_CODE = 'AGPL';
+
+    private const ISC_URL = 'https://opensource.org/licenses/ISC';
+    private const MIT_URL = 'https://opensource.org/licenses/MIT';
+    private const GPL_URL = 'https://www.gnu.org/licenses/gpl.html';
+    private const BSD_URL = 'https://opensource.org/licenses/BSD-3-Clause';
+    private const MPL_URL = 'MPhttps://www.mozilla.org/en-US/MPL';
+    private const AGPL_URL = 'https://www.gnu.org/licenses/agpl.html';
+    private const DEFAULT_URL = 'https://opensource.org/licenses';
+
+    private const LICENSES = [
+        self::ISC_CODE => self::ISC_URL,
+        self::MIT_CODE => self::MIT_URL,
+        self::GPL_CODE => self::GPL_URL,
+        self::BSD_CODE => self::BSD_URL,
+        self::MPL_CODE => self::MPL_URL,
+        self::AGPL_CODE => self::AGPL_URL,
+    ];
 
     public const CODES = [
-        self::ISC,
-        self::MIT,
-        self::GPL,
-        self::BSD,
-        self::MPL,
-        self::AGPL,
+        self::ISC_CODE,
+        self::MIT_CODE,
+        self::GPL_CODE,
+        self::BSD_CODE,
+        self::MPL_CODE,
+        self::AGPL_CODE,
     ];
 
     public static function getLicenseLink(string $licenseType): string
     {
-        switch ($licenseType) {
-            case self::ISC:
-                return 'https://opensource.org/licenses/ISC';
-
-            case self::MIT:
-                return 'https://opensource.org/licenses/MIT';
-
-            case self::GPL:
-                return 'https://www.gnu.org/licenses/gpl.html';
-
-            case self::BSD:
-                return 'https://opensource.org/licenses/BSD-3-Clause';
-
-            case self::MPL:
-                return 'https://www.mozilla.org/en-US/MPL/';
-
-            case self::AGPL:
-                return 'https://www.gnu.org/licenses/agpl.html';
-
-            default:
-                return 'https://opensource.org/licenses/';
-        }
+        return in_array($licenseType, self::CODES) ? self::LICENSES[$licenseType] : self::DEFAULT_URL;
     }
 }
