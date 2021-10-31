@@ -16,7 +16,7 @@ use Monolog\{
     Logger, Handler\StreamHandler
 };
 use PH7\PhpReadmeGeneratorFile\Command\Markdown\{
-    Generator,
+    GeneratorCommand,
     Information
 };
 use Symfony\Component\Console\Application;
@@ -30,7 +30,7 @@ $app = new Application(
 );
 
 $commands = [
-    new Generator()
+    new GeneratorCommand()
 ];
 
 $app->addCommands($commands);
