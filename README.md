@@ -1,6 +1,6 @@
 # Readme Generator 🚀
 
-# 📙 Requiremennts
+# 📙 Requirements
 
 * Make sure you have [PHP 8.0](https://www.php.net/releases/8_0_0.php) or higher installed.
 
