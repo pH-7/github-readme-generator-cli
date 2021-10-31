@@ -11,7 +11,7 @@ namespace PH7\PhpReadmeGeneratorFile\Tests\Command\Markdown;
 use Phake;
 use PHPUnit\Framework\TestCase;
 
-class GeneratorTest extends TestCase
+class GeneratorCommandTest extends TestCase
 {
     protected function setUp(): void
     {
