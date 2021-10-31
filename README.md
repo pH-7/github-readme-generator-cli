@@ -40,6 +40,9 @@
 **[Pierre-Henry Soria](https://ph7.me)**, a highly passionate, zen &amp; pragmatic software engineer 😊
 
 
+You can keep in touch with me at: *hi [AT] pH7 {D0T} me* 📮
+
+
 ## ⚖️ License
 
 This **PHP README Generator CLI script** is generously distributed under the *[MIT](https://opensource.org/licenses/MIT)*.
