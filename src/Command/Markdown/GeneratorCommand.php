@@ -49,11 +49,11 @@ class GeneratorCommand extends Command
                 if (is_dir($path)) {
                     $fileBuilder = new Builder($data);
 
-                    $fullpath = $path . DIRECTORY_SEPARATOR . $filename;
-                    $fileBuilder->save($fullpath);
+                    $fullPath = $path . DIRECTORY_SEPARATOR . $filename;
+                    $fileBuilder->save($fullPath);
 
                     $output->writeln(
-                        $io->success(sprintf('File successfully saved at: %s', $fullpath))
+                        $io->success(sprintf('File successfully saved at: %s', $fullPath))
                     );
 
                     return Command::SUCCESS;
