@@ -184,7 +184,7 @@ class GeneratorCommand extends Command
 
 
         if (!$this->isFieldFilled($webpage)) {
-            throw new EmptyFieldException('Can you mention your homepage (.e.g website, GitHub profile, etc).');
+            throw new EmptyFieldException('Can you mention your homepage (.e.g website, GitHub profile, etc)?');
         }
 
         if (!$this->isValidUrl($webpage)) {
