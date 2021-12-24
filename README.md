@@ -1,5 +1,11 @@
 # Readme Generator 🚀
 
+### A simple way to generate a GitHub README file
+
+PHP README File Generator, to generate easily beautiful (and SEO-friendly) GitHub README files on the fly 🚀
+
+- NEW [v1.2.0](https://github.com/pH-7/github-readme-generator-cli/releases/tag/v1.2.0): Default values are pre-selected from the information already present in the `composer.json` file.
+
 # 📙 Requirements
 
 * Make sure you have [PHP 8.0](https://www.php.net/releases/8_0_0.php) or a higher version installed.
