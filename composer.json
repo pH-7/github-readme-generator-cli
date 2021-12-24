@@ -3,13 +3,15 @@
     "description": "A simple way to generate a GitHub README file",
     "keywords": [
       "readme",
-      "readme md generator",
+      "md",
       "md template",
       "md generator",
+      "readme md generator",
       "readme template",
       "github readme",
       "readme generator",
-      "generate readme"
+      "generate readme",
+      "cli"
     ],
     "homepage": "https://pierrehenry.be",
     "type": "project",
