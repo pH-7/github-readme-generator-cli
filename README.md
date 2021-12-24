@@ -1,6 +1,6 @@
 # Readme Generator 🚀
 
-### A simple way to generate a GitHub README file
+### Simplest way to generate SEO-optimized GitHub README 
 
 PHP README File Generator, to generate easily beautiful (and SEO-friendly) GitHub README files on the fly 🚀
 
