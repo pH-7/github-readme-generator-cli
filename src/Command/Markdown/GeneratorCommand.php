@@ -127,7 +127,7 @@ class GeneratorCommand extends Command
 
     private function promptName(SymfonyStyle $io): string
     {
-        $name = $io->ask('Project Name', $this->getPackageName());
+        $name = $io->ask('Project Name', $this->getDefaultPackageName());
 
         if (!$this->isFieldFilled($name)) {
             throw new EmptyFieldException('Mention a name for your project 😺');
@@ -276,17 +276,17 @@ class GeneratorCommand extends Command
         );
     }
 
-    private function getValidPath(?string $path): string
-    {
-        return is_string($path) && strlen($path) > 2 ? realpath($path) : DefaultValue::DESTINATION_FILE;
-    }
-
-    private function getPackageName(): string
+    private function getDefaultPackageName(): string
     {
         $packageName = explode('/', $this->composerData['name']);
         $packageName = str_replace('-', ' ', $packageName[1]);
 
         return ucwords($packageName);
+    }
+
+    private function getValidPath(?string $path): string
+    {
+        return is_string($path) && strlen($path) > 2 ? realpath($path) : DefaultValue::DESTINATION_FILE;
     }
 
     private function getFilename(): string
