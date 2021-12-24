@@ -137,11 +137,6 @@ class GeneratorCommand extends Command
         return $name;
     }
 
-    private function isFieldFilled(?string $string): bool
-    {
-        return !empty($string) && strlen($string) > 0;
-    }
-
     private function promptHeading(SymfonyStyle $io): string
     {
         $heading = $io->ask('Project Heading/Summary');
@@ -188,7 +183,7 @@ class GeneratorCommand extends Command
 
     private function promptEmail(SymfonyStyle $io): string
     {
-        $email = $io->ask('Valid Author Email (will also be used for your gravatar)', $this->composerData['authors'][0]['name']);
+        $email = $io->ask('Valid Author Email (will also be used for your gravatar)', $this->composerData['authors'][0]['email']);
 
         if (!$this->isFieldFilled($email)) {
             throw new EmptyFieldException('Author email is required.');
@@ -204,7 +199,9 @@ class GeneratorCommand extends Command
 
     private function promptHomepageUrl(SymfonyStyle $io): string
     {
-        $webpage = $io->ask('Valid Author Webpage (e.g. https://pierre.com)');
+        $personalHomepage = !empty($this->composerData['authors'][0]['homepage']) ? $this->composerData['authors'][0]['homepage'] : $this->composerData['homepage'];
+
+        $webpage = $io->ask('Valid Author Webpage (e.g. https://pierre.com)', $personalHomepage);
 
 
         if (!$this->isFieldFilled($webpage)) {
