@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace PH7\PhpReadmeGeneratorFile\Command\Markdown;
 
+use Nadar\PhpComposerReader\ComposerReader;
 use PH7\PhpReadmeGeneratorFile\Command\Exception\EmptyFieldException;
 use PH7\PhpReadmeGeneratorFile\Command\Exception\InvalidInputException;
 use PH7\PhpReadmeGeneratorFile\DefaultValue;
@@ -22,9 +23,26 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class GeneratorCommand extends Command
 {
+    private const COMPOSER_FILE = 'composer.json';
+
+    private array $composerData;
+
     public function __construct()
     {
         parent::__construct();
+
+        $this->composerData = $this->getDefaultValues();
+    }
+
+    private function getDefaultValues(): array
+    {
+        $reader = new ComposerReader(ROOT_DIR . DIRECTORY_SEPARATOR . self::COMPOSER_FILE);
+
+        try {
+            return $reader->getContent();
+        } catch (Exception $e) {
+            return [];
+        }
     }
 
     protected function configure(): void
@@ -109,13 +127,19 @@ class GeneratorCommand extends Command
 
     private function promptName(SymfonyStyle $io): string
     {
-        $name = $io->ask('Project Name');
+        $packageName = explode('/', $this->composerData['name']);
+        $name = $io->ask('Project Name', $packageName[1]);
 
         if (!$this->isFieldFilled($name)) {
             throw new EmptyFieldException('Mention a name for your project 😺');
         }
 
         return $name;
+    }
+
+    private function isFieldFilled(?string $string): bool
+    {
+        return !empty($string) && strlen($string) > 0;
     }
 
     private function promptHeading(SymfonyStyle $io): string
@@ -131,7 +155,7 @@ class GeneratorCommand extends Command
 
     private function promptDescription(SymfonyStyle $io): string
     {
-        $description = $io->ask('Project Description');
+        $description = $io->ask('Project Description', $this->composerData['description']);
 
         if (!$this->isFieldFilled($description)) {
             throw new EmptyFieldException('Describe a bit your project.');
@@ -153,7 +177,7 @@ class GeneratorCommand extends Command
 
     private function promptAuthor(SymfonyStyle $io): string
     {
-        $authorName = $io->ask('Author Name');
+        $authorName = $io->ask('Author Name', $this->composerData['authors'][0]['name']);
 
         if (!$this->isFieldFilled($authorName)) {
             throw new EmptyFieldException('Author name is required.');
@@ -164,7 +188,7 @@ class GeneratorCommand extends Command
 
     private function promptEmail(SymfonyStyle $io): string
     {
-        $email = $io->ask('Valid Author Email (will also be used for your gravatar)');
+        $email = $io->ask('Valid Author Email (will also be used for your gravatar)', $this->composerData['authors'][0]['name']);
 
         if (!$this->isFieldFilled($email)) {
             throw new EmptyFieldException('Author email is required.');
