@@ -4,7 +4,7 @@
 
 PHP README File Generator, to generate easily beautiful (and SEO-friendly) GitHub README files on the fly 🚀
 
-- NEW [v1.2.0](https://github.com/pH-7/github-readme-generator-cli/releases/tag/v1.2.0): Default values are pre-selected from the information already present in the `composer.json` file.
+- NEW [v1.2.0](https://github.com/pH-7/github-readme-generator-cli/releases/tag/v1.2.0): Default values are pre-selected from the information already present in the `composer.json` file. `Github-readme-generator` reads `composer.json` info and suggest the default values during the creation of your `README.md` file ✨
 
 # 📙 Requirements
 
