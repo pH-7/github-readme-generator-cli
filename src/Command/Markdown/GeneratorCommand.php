@@ -160,7 +160,8 @@ class GeneratorCommand extends Command
 
     private function promptRequirements(SymfonyStyle $io): string
     {
-        $requirements = $io->ask('Requirements / Installation?');
+        $phpRequirement = !empty($this->composerData['require']['php']) ? $this->composerData['require']['php'] : null;
+        $requirements = $io->ask('Requirements / Installation?', $phpRequirement);
 
         if (!$this->isFieldFilled($requirements)) {
             throw new EmptyFieldException('What are the requirements/Installation steps for this project?');
@@ -171,7 +172,7 @@ class GeneratorCommand extends Command
 
     private function promptAuthor(SymfonyStyle $io): string
     {
-        $authorName = !empty($this->composerData['authors'][0]['name']) ? $this->composerData['authors'][0]['name'] : null;
+        $authorName = !empty($this->composerData['authors'][0]['name']) ? $this->composerData['authors'][0]['name'] : DefaultValue::AUTHOR;
         $authorName = $io->ask('Author Name', $authorName);
 
         if (!$this->isFieldFilled($authorName)) {
@@ -183,7 +184,7 @@ class GeneratorCommand extends Command
 
     private function promptEmail(SymfonyStyle $io): string
     {
-        $email = !empty($this->composerData['authors'][0]['email']) ? $this->composerData['authors'][0]['email'] : null;
+        $email = !empty($this->composerData['authors'][0]['email']) ? $this->composerData['authors'][0]['email'] : DefaultValue::EMAIL;
         $email = $io->ask('Valid Author Email (will also be used for your gravatar)', $email);
 
         if (!$this->isFieldFilled($email)) {
@@ -244,8 +245,10 @@ class GeneratorCommand extends Command
 
     private function promptLicense(HelperInterface $helper, InputInterface $input, OutputInterface $output): string
     {
+        $defaultLicense = !empty($this->composerData['license']) ? $this->composerData['license'] : DefaultValue::LICENSE_CODE;
+
         $question = new ChoiceQuestion(
-            sprintf('License [%s]', DefaultValue::LICENSE_CODE),
+            sprintf('License [%s]', $defaultLicense),
             License::CODES,
             DefaultValue::LICENSE_CODE
         );
