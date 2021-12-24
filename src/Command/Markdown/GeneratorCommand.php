@@ -128,7 +128,7 @@ class GeneratorCommand extends Command
     private function promptName(SymfonyStyle $io): string
     {
         $packageName = explode('/', $this->composerData['name']);
-        $name = $io->ask('Project Name', $packageName[1]);
+        $name = $io->ask('Project Name', str_replace($packageName[1], '-', ' '));
 
         if (!$this->isFieldFilled($name)) {
             throw new EmptyFieldException('Mention a name for your project 😺');
