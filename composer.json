@@ -1,6 +1,16 @@
 {
     "name": "ph-7/php-readme-generator-file",
     "description": "A simple way to generate a GitHub README file",
+    "keywords": [
+      "readme",
+      "readme md generator",
+      "md template",
+      "md generator",
+      "readme template",
+      "github readme",
+      "readme generator",
+      "generate readme"
+    ],
     "homepage": "https://pierrehenry.be",
     "type": "project",
     "require": {
