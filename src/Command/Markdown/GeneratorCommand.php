@@ -127,8 +127,7 @@ class GeneratorCommand extends Command
 
     private function promptName(SymfonyStyle $io): string
     {
-        $packageName = explode('/', $this->composerData['name']);
-        $name = $io->ask('Project Name', str_replace('-', ' ', $packageName[1]));
+        $name = $io->ask('Project Name', $this->getPackageName());
 
         if (!$this->isFieldFilled($name)) {
             throw new EmptyFieldException('Mention a name for your project 😺');
@@ -217,6 +216,21 @@ class GeneratorCommand extends Command
         return $webpage;
     }
 
+    private function isFieldFilled(?string $string): bool
+    {
+        return !empty($string) && strlen($string) > 0;
+    }
+
+    private function isValidEmail(string $email): bool
+    {
+        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+    }
+
+    private function isValidUrl(string $url): bool
+    {
+        return filter_var($url, FILTER_VALIDATE_URL) !== false;
+    }
+
     private function promptGithub(SymfonyStyle $io): string
     {
         $github = $io->ask('GitHub Username (github.com/<username>)');
@@ -267,23 +281,16 @@ class GeneratorCommand extends Command
         return is_string($path) && strlen($path) > 2 ? realpath($path) : DefaultValue::DESTINATION_FILE;
     }
 
+    private function getPackageName(): string
+    {
+        $packageName = explode('/', $this->composerData['name']);
+        $packageName = str_replace('-', ' ', $packageName[1]);
+
+        return ucwords($packageName);
+    }
+
     private function getFilename(): string
     {
         return sprintf('README-%s.md', date('Y-m-d H:i'));
-    }
-
-    private function isFieldFilled(?string $string): bool
-    {
-        return !empty($string) && strlen($string) > 0;
-    }
-
-    private function isValidEmail(string $email): bool
-    {
-        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
-    }
-
-    private function isValidUrl(string $url): bool
-    {
-        return filter_var($url, FILTER_VALIDATE_URL) !== false;
     }
 }
