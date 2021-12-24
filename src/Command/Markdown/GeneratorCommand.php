@@ -172,7 +172,8 @@ class GeneratorCommand extends Command
 
     private function promptAuthor(SymfonyStyle $io): string
     {
-        $authorName = $io->ask('Author Name', $this->composerData['authors'][0]['name']);
+        $authorName = !empty($this->composerData['authors'][0]['name']) ? $this->composerData['authors'][0]['name'] : null;
+        $authorName = $io->ask('Author Name', $authorName);
 
         if (!$this->isFieldFilled($authorName)) {
             throw new EmptyFieldException('Author name is required.');
@@ -183,7 +184,8 @@ class GeneratorCommand extends Command
 
     private function promptEmail(SymfonyStyle $io): string
     {
-        $email = $io->ask('Valid Author Email (will also be used for your gravatar)', $this->composerData['authors'][0]['email']);
+        $email = !empty($this->composerData['authors'][0]['email']) ? $this->composerData['authors'][0]['email'] : null;
+        $email = $io->ask('Valid Author Email (will also be used for your gravatar)', $email);
 
         if (!$this->isFieldFilled($email)) {
             throw new EmptyFieldException('Author email is required.');
