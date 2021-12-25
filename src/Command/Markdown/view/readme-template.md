@@ -1,5 +1,9 @@
 # :PROJECT-NAME:
 
+### :HEADING:
+
+:DESCRIPTION:
+
 ## :book: Contents
 
 - [Requirements](#hammer-requirements)
@@ -7,10 +11,6 @@
 - [Usage](#thought_balloon-usage)
 - [About](#cook-author)
 - [License](#page_with_curl-license)
-
-### :HEADING:
-
-:DESCRIPTION:
 
 ## :hammer: Requirements
 
