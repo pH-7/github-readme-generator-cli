@@ -160,7 +160,7 @@ class GeneratorCommand extends Command
 
     private function promptRequirements(SymfonyStyle $io): string
     {
-        $phpRequirement = !empty($this->composerData['require']['php']) ? sprintf('PHP %s', $this->composerData['require']['php']) : null;
+        $phpRequirement = !empty($this->composerData['require']['php']) ? sprintf('* PHP %s', $this->composerData['require']['php']) : null;
         $requirements = $io->ask('Requirements / Installation?', $phpRequirement);
 
         if (!$this->isFieldFilled($requirements)) {
