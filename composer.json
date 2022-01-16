@@ -39,8 +39,8 @@
             "PH7\\PhpReadmeGeneratorFile\\": "src/"
         }
     },
-    "minimum-stability": "stable",
     "scripts": {
         "test": "vendor/bin/phpunit"
-      }
+    },
+    "minimum-stability": "stable"
 }
