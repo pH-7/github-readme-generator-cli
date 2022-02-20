@@ -10,7 +10,7 @@ namespace PH7\PhpReadmeGeneratorFile\Tests\Command\Markdown;
 
 use PH7\PhpReadmeGeneratorFile\Command\Markdown\GeneratorCommand;
 use Phake;
-use Phake_IMock;
+use Phake\IMock;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputInterface;
@@ -18,11 +18,11 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class GeneratorCommandTest extends TestCase
 {
-    private OutputInterface|Phake_IMock $input;
+    private OutputInterface|IMock $input;
 
-    private OutputInterface|Phake_IMock $output;
+    private OutputInterface|IMock $output;
     
-    private OutputInterface|Phake_IMock $io;
+    private OutputInterface|IMock $io;
     
     private GeneratorCommand $generator;
     
