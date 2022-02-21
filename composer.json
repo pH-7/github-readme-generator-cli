@@ -1,46 +1,51 @@
 {
-    "name": "ph-7/php-readme-generator-file",
-    "description": "A simple way to generate a GitHub README file",
-    "keywords": [
-      "readme",
-      "md",
-      "md template",
-      "md generator",
-      "readme md generator",
-      "readme template",
-      "github readme",
-      "readme generator",
-      "generate readme",
-      "cli"
-    ],
-    "homepage": "https://pierrehenry.be",
-    "type": "project",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Pierre-Henry Soria",
-            "email": "hi@ph7.me",
-            "homepage": "https://ph7.me"
-        }
-    ],
-    "require": {
-        "php": ">=8.0.0",
-        "symfony/console": "^5.3",
-        "monolog/monolog": "^2.3",
-        "ph-7/ph2gravatar": "^1.1",
-        "nadar/php-composer-reader": "^1.3"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "phake/phake": "^4.2"
-    },
-    "autoload": {
-        "psr-4": {
-            "PH7\\PhpReadmeGeneratorFile\\": "src/"
-        }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit"
-    },
-    "minimum-stability": "stable"
+  "name": "ph-7/php-readme-generator-file",
+  "description": "A simple way to generate a GitHub README file",
+  "keywords": [
+    "readme",
+    "md",
+    "md template",
+    "md generator",
+    "readme md generator",
+    "readme template",
+    "github readme",
+    "readme generator",
+    "generate readme",
+    "cli"
+  ],
+  "homepage": "https://pierrehenry.be",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pierre-Henry Soria",
+      "email": "hi@ph7.me",
+      "homepage": "https://ph7.me"
+    }
+  ],
+  "require": {
+    "php": ">=8.0.0",
+    "symfony/console": "^5.3",
+    "monolog/monolog": "^2.3",
+    "ph-7/ph2gravatar": "^1.1",
+    "nadar/php-composer-reader": "^1.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5",
+    "phake/phake": "^4.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "PH7\\PhpReadmeGeneratorFile\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PH7\\PhpReadmeGeneratorFile\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "minimum-stability": "stable"
 }

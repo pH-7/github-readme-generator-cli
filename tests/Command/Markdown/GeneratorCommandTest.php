@@ -38,7 +38,6 @@ class GeneratorCommandTest extends TestCase
     public function testExecute(): void
     {
         // Phake::when($this->io)->getHelper
-        
-        $this->generator->execute($this->input, $this->output);
+        // $this->generator->execute($this->input, $this->output);
     }
 }
