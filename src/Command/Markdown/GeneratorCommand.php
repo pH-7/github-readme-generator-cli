@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace PH7\PhpReadmeGeneratorFile\Command\Markdown;
 
+use Exception;
 use Nadar\PhpComposerReader\ComposerReader;
 use PH7\PhpReadmeGeneratorFile\Command\Exception\EmptyFieldException;
 use PH7\PhpReadmeGeneratorFile\Command\Exception\InvalidInputException;
