@@ -50,15 +50,16 @@
 You can keep in touch with me at: *hi [AT] pH7 {D0T} me* 📮
 
 
-## ⚖️ License
-
-This **PHP README Generator CLI script** is generously distributed under the *[MIT](https://opensource.org/licenses/MIT)*.
-
 ## :tv: Video
 
 [![Watch the video](https://i1.ytimg.com/vi/DsJRGl3y0KI/sddefault.jpg)](https://www.youtube.com/watch?v=DsJRGl3y0KI)
 
 👉 **[Click here to watch on YouTube](https://www.youtube.com/watch?v=DsJRGl3y0KI)**
+
+
+## ⚖️ License
+
+This **PHP README Generator CLI script** is generously distributed under the *[MIT](https://opensource.org/licenses/MIT)*.
 
 
 <!-- GitHub's Markdown reference links -->
