@@ -7,7 +7,7 @@
 - NEW [v1.2.0](https://github.com/pH-7/github-readme-generator-cli/releases/tag/v1.2.0): Default values are pre-selected from the information already present in the `composer.json` file. 
   > `github-readme-generator` reads `composer.json` info and suggest the default values during the creation of your `README.md` file ✨
 
-# 📙 Requirements
+## 📙 Requirement
 
 * Make sure you have [PHP 8.0](https://www.php.net/releases/8_0_0.php) or a higher version installed.
 
