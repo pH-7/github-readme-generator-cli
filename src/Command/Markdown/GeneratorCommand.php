@@ -26,6 +26,9 @@ class GeneratorCommand extends Command
 {
     private const COMPOSER_FILE = 'composer.json';
 
+    private const SUCESS_MESSAGE = 'File successfully saved at: %s';
+    private const ERROR_PATH_NOT_FOUND_MESSAGE = 'Oops. The path "%s" doesn\'t exist.';
+
     private array $composerData;
 
     public function __construct()
@@ -71,13 +74,13 @@ class GeneratorCommand extends Command
                     $fileBuilder->save($fullPath);
 
                     $output->writeln(
-                        $io->success(sprintf('File successfully saved at: %s', $fullPath))
+                        $io->success(sprintf(self::SUCESS_MESSAGE, $fullPath))
                     );
 
                     return Command::SUCCESS;
                 } else {
                     $output->writeln(
-                        $io->error(sprintf('Oops. The path "%s" doesn\'t exist.', $path))
+                        $io->error(sprintf(self::ERROR_PATH_NOT_FOUND_MESSAGE, $path))
                     );
 
                     return Command::INVALID;
