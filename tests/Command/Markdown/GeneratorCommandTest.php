@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-class GeneratorCommandTest extends TestCase
+final class GeneratorCommandTest extends TestCase
 {
     private OutputInterface|IMock $input;
 
