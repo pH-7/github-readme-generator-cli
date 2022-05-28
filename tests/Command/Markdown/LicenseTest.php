@@ -11,7 +11,7 @@ namespace PH7\PhpReadmeGeneratorFile\Tests\Command\Markdown;
 use PH7\PhpReadmeGeneratorFile\Command\Markdown\License;
 use PHPUnit\Framework\TestCase;
 
-class LicenseTest extends TestCase
+final class LicenseTest extends TestCase
 {
     /**
      * @dataProvider licenseCodeProvider
