@@ -12,7 +12,7 @@
 * Make sure you have [PHP 8.0](https://www.php.net/releases/8_0_0.php) or a higher version installed.
 
 
-## ⚙️ Steup
+## ⚙️ Setup
 
 * Install Composer v2 or higher (https://getcomposer.org)
 
