@@ -2,7 +2,7 @@
 
 # Save a git project to a specific repo (e.g. github, bitbucket, ...)
 function save-project-to-repo() {
-    branch="master"
+    branch="main"
 
     git remote rm origin
     git remote add origin $1
