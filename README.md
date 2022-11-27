@@ -7,6 +7,13 @@
 - NEW [v1.2.0](https://github.com/pH-7/github-readme-generator-cli/releases/tag/v1.2.0): Default values are pre-selected from the information already present in the `composer.json` file. 
   > `github-readme-generator` reads `composer.json` info and suggest the default values during the creation of your `README.md` file ✨
 
+1. [Requirement](#-requirement)
+2. [Setup](#%EF%B8%8F-setup)
+3. [Me Coding It](#tv-video)
+4. [About Me](#-about-me)
+5. [License](#%EF%B8%8F-license)
+
+
 ## 📙 Requirement
 
 * Make sure you have [PHP 8.0](https://www.php.net/releases/8_0_0.php) or a higher version installed.
@@ -38,6 +45,13 @@
 ![GitHub README File Generator CLI](php-readme-generator-cli-sample.png)
 
 
+## :tv: Video
+
+[![Watch the video](https://i1.ytimg.com/vi/DsJRGl3y0KI/sddefault.jpg)](https://www.youtube.com/watch?v=DsJRGl3y0KI)
+
+👉 **[Click here to watch on YouTube](https://www.youtube.com/watch?v=DsJRGl3y0KI)**
+
+
 ## 🤠 About Me
 
 [![Pierre-Henry Soria](https://s.gravatar.com/avatar/a210fe61253c43c869d71eaed0e90149?s=200)](https://ph7.me "Pierre-Henry Soria personal website")
@@ -48,13 +62,6 @@
 
 
 You can keep in touch with me at: *hi [AT] pH7 {D0T} me* 📮
-
-
-## :tv: Video
-
-[![Watch the video](https://i1.ytimg.com/vi/DsJRGl3y0KI/sddefault.jpg)](https://www.youtube.com/watch?v=DsJRGl3y0KI)
-
-👉 **[Click here to watch on YouTube](https://www.youtube.com/watch?v=DsJRGl3y0KI)**
 
 
 ## ⚖️ License
